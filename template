@@ -1,0 +1,21 @@
+server {
+        listen {{IP}}:80;
+        root /var/www/{{DIR}};
+        index index.php index.html index.htm;
+        server_name {{NAME}} {{NAME}};
+
+        location ~* .(jpg|jpeg|gif|png|ico|css|bmp|swf|js|txt)$ {
+            root /var/www/{{DIR}};
+        }
+
+        location ~ /.ht {
+                deny  all;
+        }
+
+        location / {
+#               try_files $uri $uri/ /index.php;
+                proxy_pass  http://{{IP}}:81;
+                include     /etc/nginx/proxy.conf;
+        }
+}
+
