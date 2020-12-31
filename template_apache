@@ -1,0 +1,7 @@
+<Directory /var/www/{{DIR}}>
+        AllowOverride All
+</Directory>
+<VirtualHost {{IP}}:81>
+        ServerName {{NAME}}
+        DocumentRoot /var/www/{{DIR}}/
+</VirtualHost>
